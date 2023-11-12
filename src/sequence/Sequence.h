@@ -13,6 +13,7 @@ class Sequence
     std::string solveSequence(const std::string& sequence);
     private:
     ProbabilityMatrix_t probabilityMatrix;
+    bool validSequence(const std::string& sequence);
 };
 
 #endif

@@ -36,6 +36,9 @@ ProbabilityMatrix_t IO::readProbabilityMatrix()
     probabliityMatrix.t_given_a = 1 - probabliityMatrix.h_given_a;
     probabliityMatrix.t_given_b = 1 - probabliityMatrix.h_given_b;
 
+    probabliityMatrix.start_a = probabliityMatrix.a_to_a;
+    probabliityMatrix.start_b = probabliityMatrix.a_to_b;
+
     return probabliityMatrix;
 }
 
@@ -55,6 +58,9 @@ ProbabilityMatrix_t IO::readProbabilityMatrix(const std::string& filename)
 
     probabliityMatrix.t_given_a = 1 - probabliityMatrix.h_given_a;
     probabliityMatrix.t_given_b = 1 - probabliityMatrix.h_given_b;
+
+    probabliityMatrix.start_a = probabliityMatrix.a_to_a;
+    probabliityMatrix.start_b = probabliityMatrix.a_to_b;
 
     return probabliityMatrix;
 }
