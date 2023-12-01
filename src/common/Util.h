@@ -1,3 +1,9 @@
+/*
+    Util.h by Alexander Odom
+    CS 447 Assignment 2
+    contains structs and values used by IO and Sequence classes
+*/
+
 #include <sstream>
 
 #ifndef UTIL_H_
@@ -27,8 +33,8 @@ typedef struct
 
 const char COIN_A = 'X';
 const char COIN_B = 'Y';
-const char HEADS = 'H';
-const char TAILS = 'T';
+const char HEADS = '1';
+const char TAILS = '0';
 
 
 #endif

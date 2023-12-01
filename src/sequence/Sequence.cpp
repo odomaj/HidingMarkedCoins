@@ -1,3 +1,8 @@
+/*
+    Sequence.cpp by Alexander Odom
+    CS 447 Assignment 2
+*/
+
 #include "Sequence.h"
 
 Sequence::Sequence()
@@ -47,14 +52,17 @@ std::string Sequence::solveSequence(const std::string& sequence)
             {
                 sequenceB.probability = a_to_b;
                 std::string temp = sequenceA.oss.str();
+                sequenceA.oss.str("");
                 sequenceA.oss.clear();
                 sequenceA.oss << sequenceB.oss.str();
+                sequenceB.oss.str("");
                 sequenceB.oss.clear();
                 sequenceB.oss << temp;
             }
             else
             {
                 sequenceB.probability = b_to_b;
+                sequenceA.oss.str("");
                 sequenceA.oss.clear();
                 sequenceA.oss << sequenceB.oss.str();
             }
@@ -65,6 +73,7 @@ std::string Sequence::solveSequence(const std::string& sequence)
             if(a_to_b > b_to_b)
             {
                 sequenceB.probability = a_to_b;
+                sequenceB.oss.str("");
                 sequenceB.oss.clear();
                 sequenceB.oss << sequenceA.oss.str();
             }
@@ -99,6 +108,10 @@ std::string Sequence::solveSequence(const std::string& sequence)
 
 bool Sequence::validSequence(const std::string& sequence)
 {
+    if(sequence.length() == 0)
+    {
+        return false;
+    }
     for(int i = 0; i < sequence.length(); i++)
     {
         if(sequence[i] != HEADS && sequence[i] != TAILS)

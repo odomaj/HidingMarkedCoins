@@ -1,3 +1,8 @@
+/*
+    IO.cpp by Alexander Odom
+    CS 447 Assignment 2
+*/
+
 #include "IO.h"
 
 IO::IO()
@@ -14,12 +19,17 @@ std::string IO::readSequence()
 
 std::string IO::readSequence(const std::string& filename)
 {
-    std::string sequence;
+    std::ostringstream sequence;
     std::ifstream in;
     in.open(filename);
-    in >> sequence;
+    while(!in.fail())
+    {
+        std::string nextSequence;
+        in >> nextSequence;
+        sequence << nextSequence;
+    }
     in.close();
-    return sequence;
+    return sequence.str();
 }
 
 ProbabilityMatrix_t IO::readProbabilityMatrix()
@@ -42,16 +52,18 @@ ProbabilityMatrix_t IO::readProbabilityMatrix()
     return probabliityMatrix;
 }
 
-ProbabilityMatrix_t IO::readProbabilityMatrix(const std::string& filename)
+ProbabilityMatrix_t IO::readProbabilityMatrix(const std::string& chainFilename, const std::string& emitFilename)
 {
     ProbabilityMatrix_t probabliityMatrix;
 
     std::ifstream in;
-    in.open(filename);
+    in.open(chainFilename);
     in >> probabliityMatrix.a_to_a; 
     in >> probabliityMatrix.b_to_b;
     in >> probabliityMatrix.a_to_b;
     in >> probabliityMatrix.b_to_a;
+    in.close();
+    in.open(emitFilename);
     in >> probabliityMatrix.h_given_a;
     in >> probabliityMatrix.h_given_b;
     in.close();

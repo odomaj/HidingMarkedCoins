@@ -1,3 +1,9 @@
+/*
+    IO.h by Alexander Odom
+    CS 447 Assignment 2
+    responsible for io operations and formatting data used by Sequence class
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -15,7 +21,7 @@ class IO
     std::string readSequence();
     std::string readSequence(const std::string& filename);
     ProbabilityMatrix_t readProbabilityMatrix();
-    ProbabilityMatrix_t readProbabilityMatrix(const std::string& filename);
+    ProbabilityMatrix_t readProbabilityMatrix(const std::string& chainFilename, const std::string& emitFilename);
 
     void writeSequence(const std::string& sequence);
     void writeSequence(const std::string& sequence, const std::string& filename);
